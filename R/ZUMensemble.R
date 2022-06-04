@@ -1,3 +1,10 @@
+#' @details
+#' Build an ensemble classification model with ensemble().
+#'
+#' Predict the results with predict().
+#' @keywords internal
+"_PACKAGE"
+
 #' Creates an ensemble model based on any classification algorithm
 #' @export
 #' @param algorithm a classification algorithm
