@@ -1,0 +1,16 @@
+\name{Ensemble}
+\alias{Ensemble}
+\title{Ensemble}
+\usage{
+ensemble(function(algorithm, formula, dataset, mcount=10, pattr=0.8, ...)
+
+predict(ensemble_model, dataset, type="prob", single_predict=predict)
+}
+\description{
+
+ensemble(function(algorithm, formula, dataset, mcount=10, pattr=0.8, ...)
+
+predict(ensemble_model, dataset, type="prob", single_predict=predict)
+}
+\examples{
+}
