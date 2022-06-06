@@ -9,8 +9,8 @@
 Builds an ensemble model using any classification algorithm passed as an argument.
 }
 \details{
-Build an ensemble classification model with [ensemble()].
+Build an ensemble classification model with ensemble().
 
-Predict the results with [predict()].
+Predict the results with predict().
 }
 \keyword{internal}

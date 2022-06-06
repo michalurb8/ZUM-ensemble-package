@@ -13,7 +13,7 @@
 #' @param mcount number of models in the ensemble model
 #' @param pattr percent of all attributes to be sampled for one model
 #' @param ... named arguments passed to a single model
-ensemble <- function(algorithm, formula, dataset, mcount=10, pattr=0.8, ...) {
+ensemble <- function(algorithm, formula, dataset, mcount=100, pattr=0.6, ...) {
   results <- list()
   for (i in 1:mcount) {
     attr_count <- max(1, floor(pattr * (ncol(dataset)-1)))
@@ -31,8 +31,7 @@ ensemble <- function(algorithm, formula, dataset, mcount=10, pattr=0.8, ...) {
   return(ensemble_model)
 }
 
-
-#' Predict method for the created earlier ensemble model
+#' Predict method for the previously created ensemble model
 #' @export
 #' @param ensemble_model previously built ensemble model object
 #' @param dataset dataframe containing test data

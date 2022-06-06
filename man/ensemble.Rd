@@ -4,7 +4,7 @@
 \alias{ensemble}
 \title{Creates an ensemble model based on any classification algorithm}
 \usage{
-ensemble(algorithm, formula, dataset, mcount = 10, pattr = 0.8, ...)
+ensemble(algorithm, formula, dataset, mcount = 100, pattr = 0.6, ...)
 }
 \arguments{
 \item{algorithm}{a classification algorithm}

@@ -2,7 +2,7 @@ Package: ZUMensemble
 Type: Package
 Title: Ensemble classification model
 Version: 0.1.0
-Author: Michał Urbański, Michał Kozak
+Author: Michał Urbański
 Maintainer: The package maintainer <michalurb8@wp.pl>
 Description: Builds an ensemble model using any classification algorithm passed as an argument.
 License: GPL-3

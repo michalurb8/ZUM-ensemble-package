@@ -2,7 +2,7 @@
 % Please edit documentation in R/ZUMensemble.R
 \name{predict.EnsembleModel}
 \alias{predict.EnsembleModel}
-\title{Predict method for the created earlier ensemble model}
+\title{Predict method for the previously created ensemble model}
 \usage{
 \method{predict}{EnsembleModel}(ensemble_model, dataset, type = "prob", single_predict = predict)
 }
@@ -16,5 +16,5 @@
 \item{single_predict}{a method for prediction, default is "predict"}
 }
 \description{
-Predict method for the created earlier ensemble model
+Predict method for the previously created ensemble model
 }
