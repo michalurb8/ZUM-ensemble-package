@@ -58,6 +58,7 @@ predict.EnsembleModel <- function (ensemble_model, dataset, type="prob", single_
       class_list[i] <- colnames(predictions)[which.max(predictions[i,])]
     }
     class_list <- as.factor(class_list)
+    levels(class_list) <- levels(dataset$class)
     return(class_list)
   }
   return(predictions)
