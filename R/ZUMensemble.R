@@ -33,7 +33,7 @@ ensemble <- function(algorithm, formula, dataset, mcount=100, pattr=0.6, ...) {
     new_model <- algorithm(formula=single_formula, data=dataset, ...)
     results[[i]] <- new_model
   }
-  results[[i+1]] <- predicted_class
+  results[[i+1]] <- levels(as.factor(dataset[,predicted_class]))
   ensemble_model <- structure(results, class="EnsembleModel")
   return(ensemble_model)
 }
@@ -45,8 +45,7 @@ ensemble <- function(algorithm, formula, dataset, mcount=100, pattr=0.6, ...) {
 #' @param type if "class", returns a vector of classes, otherwise (default) a matrix of probabilities
 #' @param single_predict a method for prediction, default is "predict"
 predict.EnsembleModel <- function (ensemble_model, dataset, type="prob", single_predict=predict) {
-  predicted_class <- ensemble_model[[length(ensemble_model)]]
-  modelClasses <- levels(as.factor(dataset[,predicted_class]))
+  modelClasses <- ensemble_model[[length(ensemble_model)]]
   predictions <- matrix(0, nrow=nrow(dataset), ncol=length(modelClasses))
   colnames(predictions) <- modelClasses
 
