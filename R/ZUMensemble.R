@@ -20,9 +20,7 @@ ensemble <- function(algorithm, formula, dataset, mcount=100, pattr=0.6, ...) {
     attr_count <- max(1, floor(pattr * (ncol(dataset)-1)))
 
     bootstrapped <- dataset[sample(nrow(dataset), nrow(dataset), replace=TRUE),]
-    #without_class <- bootstrapped[,!(names(bootstrapped) == predicted_class)]
-    #attr_randomized <- sample(without_class, attr_count)
-    #attr_randomized[,predicted_class] <- bootstrapped[,predicted_class]
+
     attr_names <- names(bootstrapped)
     attr_names <- attr_names[!attr_names == predicted_class]
     attr_names <- sample(attr_names, attr_count)
@@ -33,7 +31,7 @@ ensemble <- function(algorithm, formula, dataset, mcount=100, pattr=0.6, ...) {
     new_model <- algorithm(formula=single_formula, data=dataset, ...)
     results[[i]] <- new_model
   }
-  results[[i+1]] <- levels(as.factor(dataset[,predicted_class]))
+  results[[i+1]] <- levels(as.factor(unlist(dataset[,predicted_class])))
   ensemble_model <- structure(results, class="EnsembleModel")
   return(ensemble_model)
 }
@@ -51,7 +49,7 @@ predict.EnsembleModel <- function (ensemble_model, dataset, type="prob", single_
 
   modelCount <- length(ensemble_model)
 
-  for (i in 1:(length(ensemble_model)-1)) {
+  for (i in 1:(length(ensemble_model))) {
     newPrediction <- single_predict(ensemble_model[[i]], dataset, type="class")
 
     for (j in 1:length(newPrediction)) {
@@ -65,7 +63,7 @@ predict.EnsembleModel <- function (ensemble_model, dataset, type="prob", single_
       class_list[i] <- colnames(predictions)[which.max(predictions[i,])]
     }
     class_list <- as.factor(class_list)
-    levels(class_list) <- modelClasses
+    #levels(class_list) <- modelClasses
     return(class_list)
   }
   return(predictions)
