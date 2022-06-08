@@ -49,7 +49,7 @@ predict.EnsembleModel <- function (ensemble_model, dataset, type="prob", single_
 
   modelCount <- length(ensemble_model)
 
-  for (i in 1:(length(ensemble_model))) {
+  for (i in 1:(length(ensemble_model)-1)) {
     newPrediction <- single_predict(ensemble_model[[i]], dataset, type="class")
 
     for (j in 1:length(newPrediction)) {
@@ -63,7 +63,7 @@ predict.EnsembleModel <- function (ensemble_model, dataset, type="prob", single_
       class_list[i] <- colnames(predictions)[which.max(predictions[i,])]
     }
     class_list <- as.factor(class_list)
-    #levels(class_list) <- modelClasses
+    levels(class_list) <- modelClasses
     return(class_list)
   }
   return(predictions)
